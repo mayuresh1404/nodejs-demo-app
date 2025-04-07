@@ -1,17 +1,19 @@
-# Dockerfile
-FROM node:16
+# Use Node.js base image
+FROM node:18
 
 # Set working directory
 WORKDIR /app
 
-# Copy files and install dependencies
+# Copy package.json and install deps
 COPY package*.json ./
 RUN npm install
 
+# Copy rest of the app
 COPY . .
 
-# Expose the app port
+# Expose port
 EXPOSE 3000
 
-# Start the application
+# Run the app
 CMD ["npm", "start"]
+
